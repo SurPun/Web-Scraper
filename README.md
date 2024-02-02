@@ -24,3 +24,9 @@ Building a Conda Environment is necessary for this project, the enviornment.yaml
     ```
     conda activate web_scraper
     ```
+
+## ChromeDriver
+
+This Project uses the Chromedriver.exe file which can be downloaded from the [official website](https://chromedriver.chromium.org/downloads) to browse and scrape data from the web.
+
+- Download the zip file and copy chromedriver.exe into the chromedriver folder.
