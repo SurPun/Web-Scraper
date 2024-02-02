@@ -1,0 +1,9 @@
+name: web_scraper
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - just
+  - pip
+  - pip:
+    - -r requirements.txt
