@@ -3,8 +3,7 @@
 ## Requirements:
 
 - <b>Python</b> -
-    If you haven't installed Python yet, you can download it from the [official website](https://www.python.org/downloads/).
-<br>
+    If you haven't installed Python yet, you can download it from the [official website](https://www.python.org/downloads/).<br>
 - <b>Conda</b> - 
     If you haven’t installed Conda yet, you can download it from the [official website](https://www.anaconda.com/download) to download the version compatible with your operating system.
 
