@@ -43,8 +43,20 @@ def setup_webdriver():
     return webdriver.Chrome(service=service)
 
 
+# Navigate To Url
 def navigate_to_page(driver, url):
     driver.get(url)
+
+
+# Accept Cookies
+def accept_cookies(driver):
+    try:
+        agree_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "onetrust-accept-btn-handler")))
+        agree_button.click()
+    except NoSuchElementException:
+        print("Cookie acceptance element not found on page.")
+
 
 # Execute
 if __name__ == "__main__":
@@ -52,4 +64,5 @@ if __name__ == "__main__":
     driver = setup_webdriver()
 
     navigate_to_page(driver, "https://www.myvue.com/")
+    accept_cookies(driver)
 
