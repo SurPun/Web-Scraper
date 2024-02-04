@@ -65,4 +65,3 @@ if __name__ == "__main__":
 
     navigate_to_page(driver, "https://www.myvue.com/")
     accept_cookies(driver)
-
