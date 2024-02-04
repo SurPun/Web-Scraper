@@ -8,7 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC # Collection of
 from selenium.common.exceptions import NoSuchElementException # Exception thrown when an element is not found.
 
 # Image Downloader
-
 def download_image(image_url, file_name):
     # Check if the directory exists where the image will be saved
     directory = os.path.dirname(file_name)
@@ -19,3 +18,38 @@ def download_image(image_url, file_name):
     if response.status_code == 200:
         with open(file_name, 'wb') as file:
             file.write(response.content)
+
+
+# proxy settings
+vue_domain = "https://www.myvue.com/"
+NO_PROXY_DOMAINS = "localhost, vue_domain"
+os.environ["no_proxy"] = NO_PROXY_DOMAINS
+
+
+def _get_chromedriver_path():
+
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root_path = os.path.abspath(os.path.join(current_dir, os.pardir))
+    chromedriver_path = os.path.join(
+        project_root_path,
+        "chromedriver",
+        "chromedriver.exe"
+    )
+    return chromedriver_path
+
+
+def setup_webdriver():
+    service = Service(executable_path=_get_chromedriver_path())
+    return webdriver.Chrome(service=service)
+
+
+def navigate_to_page(driver, url):
+    driver.get(url)
+
+# Execute
+if __name__ == "__main__":
+
+    driver = setup_webdriver()
+
+    navigate_to_page(driver, "https://www.myvue.com/")
+
