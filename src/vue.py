@@ -58,6 +58,31 @@ def accept_cookies(driver):
         print("Cookie acceptance element not found on page.")
 
 
+def extract_data(driver):
+    vue_data = []
+    vue_elements = driver.find_elements(By.CSS_SELECTOR, "card")
+
+    for vue_elements in vue_elements:
+        try:
+            title_element = vue_elements.find_elements(By.CSS_SELECTOR, "h3.card-title")
+            movie_name = title_element.text.strip()
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Execute
 if __name__ == "__main__":
 
@@ -65,3 +90,4 @@ if __name__ == "__main__":
 
     navigate_to_page(driver, "https://www.myvue.com/")
     accept_cookies(driver)
+    data = extract_data(driver)
