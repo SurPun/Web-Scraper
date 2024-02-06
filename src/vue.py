@@ -64,14 +64,20 @@ def extract_data(driver):
     vue_elements = driver.find_elements(By.CSS_SELECTOR, ".card")
 
     for element in vue_elements:
-        movie_name = "Unkown"
+        movie_name = "Unknown"
 
         try:
             title_element = element.find_element(By.CSS_SELECTOR, "h3.card-title")
             movie_name = title_element.text.strip()
 
+            image_element = element.find_element(By.CSS_SELECTOR, "img")
+            image_url = image_element.get_attribute('src') or image_element.get_attribute('data-src')
+
+            image_file_name = f"movie_names/{movie_name.replace(' ', '_')}.jpg"
+
             vue_data = {
-            'title': movie_name
+            'title': movie_name,
+            'image_file_name': image_file_name
             }
             vue_datas.append(vue_data)
 
