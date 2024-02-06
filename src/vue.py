@@ -75,6 +75,8 @@ def extract_data(driver):
 
             image_file_name = f"movie_names/{movie_name.replace(' ', '_')}.jpg"
 
+            download_image(image_url, image_file_name)
+
             vue_data = {
             'title': movie_name,
             'image_file_name': image_file_name
