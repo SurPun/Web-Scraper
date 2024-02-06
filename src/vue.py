@@ -7,19 +7,6 @@ from selenium.webdriver.support.ui import WebDriverWait # Provides the ability t
 from selenium.webdriver.support import expected_conditions as EC # Collection of predefined conditions to use with WebDriverWait.
 from selenium.common.exceptions import NoSuchElementException # Exception thrown when an element is not found.
 
-# Image Downloader
-def download_image(image_url, file_name):
-    # Check if the directory exists where the image will be saved
-    directory = os.path.dirname(file_name)
-    if not os.path.exists(directory):
-        os.makedirs(directory)  # Create the directory if it does not exist
-    
-    response = requests.get(image_url)
-    if response.status_code == 200:
-        with open(file_name, 'wb') as file:
-            file.write(response.content)
-
-
 # proxy settings
 vue_domain = "https://www.myvue.com/"
 NO_PROXY_DOMAINS = "localhost, vue_domain"
@@ -56,6 +43,19 @@ def accept_cookies(driver):
         agree_button.click()
     except NoSuchElementException:
         print("Cookie acceptance element not found on page.")
+
+
+# Image Downloader
+def download_image(image_url, file_name):
+    # Check if the directory exists where the image will be saved
+    directory = os.path.dirname(file_name)
+    if not os.path.exists(directory):
+        os.makedirs(directory)  # Create the directory if it does not exist
+    
+    response = requests.get(image_url)
+    if response.status_code == 200:
+        with open(file_name, 'wb') as file:
+            file.write(response.content)
 
 
 # Extract Data
