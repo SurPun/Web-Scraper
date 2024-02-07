@@ -70,6 +70,9 @@ def extract_data(driver):
             title_element = element.find_element(By.CSS_SELECTOR, "h3.card-title")
             movie_name = title_element.text.strip()
 
+            link_element = element.find_element(By.CSS_SELECTOR, "a")
+            movie_link = link_element.get_attribute('href')
+
             image_element = element.find_element(By.CSS_SELECTOR, "img")
             image_url = image_element.get_attribute('src') or image_element.get_attribute('data-src')
 
@@ -79,6 +82,7 @@ def extract_data(driver):
 
             vue_data = {
             'title': movie_name,
+            'link': movie_link,
             'image_file_name': image_file_name
             }
             vue_datas.append(vue_data)
