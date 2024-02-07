@@ -94,6 +94,16 @@ def extract_data(driver):
 
     return vue_datas
 
+def scrape_movie_details(driver, movie_data):
+    driver.get(movie_data["link"])
+    try:
+        description_element = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "p"))
+        )
+        movie_data['description'] = description_element.text.strip()
+    except NoSuchElementException:
+        movie_data['description'] = "No description found."
+
 
 # Execute
 if __name__ == "__main__":
@@ -104,6 +114,10 @@ if __name__ == "__main__":
     accept_cookies(driver)
 
     data = extract_data(driver)
+
+    for movie in data:
+        scrape_movie_details(driver, movie)
+
     print(data)
 
     input("Press Enter to close the browser...")
