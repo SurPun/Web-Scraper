@@ -1,5 +1,6 @@
 import os # Operating System
 import requests # Library for making HTTP requests in Python
+import json
 from selenium import webdriver # Imports the WebDriver class for controlling web browsers.
 from selenium.webdriver.common.by import By # Provides ways to locate elements within a page.
 from selenium.webdriver.chrome.service import Service # Allows you to start the Chrome browser in a Selenium script.
@@ -119,6 +120,9 @@ if __name__ == "__main__":
         scrape_movie_details(driver, movie)
 
     print(data)
+
+    with open('movie_data.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
 
     input("Press Enter to close the browser...")
     driver.quit()
