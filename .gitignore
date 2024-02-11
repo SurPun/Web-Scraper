@@ -1,3 +1,4 @@
 chromedriver/*
 !chromedriver/.gitkeep
 data/*
+misc
