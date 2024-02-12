@@ -121,6 +121,7 @@ if __name__ == "__main__":
 
     print(data)
 
+# TOFIX:
     base_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Goes up one level from src
 
     # Define the directory where the images (and now the JSON file) will be saved
@@ -137,5 +138,6 @@ if __name__ == "__main__":
     with open(json_file_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
+# ----
     input("Press Enter to close the browser...")
     driver.quit()
