@@ -121,23 +121,16 @@ if __name__ == "__main__":
 
     print(data)
 
-# TOFIX:
-    base_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Goes up one level from src
+    image_directory = os.path.join('movie_names')
 
-    # Define the directory where the images (and now the JSON file) will be saved
-    image_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'movie_names')
-
-    # Ensure the directory exists
     if not os.path.exists(image_directory):
         os.makedirs(image_directory)
 
-    # Specify the path for the JSON file within the 'movie_names' directory
     json_file_path = os.path.join(image_directory, 'movie_data.json')
 
-    # Write the data to the JSON file in the specified directory
     with open(json_file_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-# ----
+
     input("Press Enter to close the browser...")
     driver.quit()
